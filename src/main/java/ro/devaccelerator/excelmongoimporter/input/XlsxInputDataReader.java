@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ro.devaccelerator.excelmongoimporter.input;
 
 import java.io.FileInputStream;
@@ -15,7 +10,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import ro.devaccelerator.excelmongoimporter.utils.Logger;
 
 /**
- *
+ * Read data from XLSX files - Office 2007+
+ * 
  * @author bogdan
  */
 public class XlsxInputDataReader extends InputDataReaderBase {

@@ -11,7 +11,8 @@ import org.apache.poi.ss.usermodel.Row;
 import ro.devaccelerator.excelmongoimporter.utils.Logger;
 
 /**
- *
+ * Read data from XLS files - &lt; Office 2007
+ * 
  * @author bogdan
  */
 public class XlsInputDataReader extends InputDataReaderBase {

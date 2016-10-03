@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ro.devaccelerator.excelmongoimporter;
 
 import ro.devaccelerator.excelmongoimporter.input.ExcelInputSource;
@@ -12,7 +7,7 @@ import ro.devaccelerator.excelmongoimporter.utils.ImportResult;
 import ro.devaccelerator.excelmongoimporter.utils.Logger;
 
 /**
- *
+ * Command line runner for the import
  * @author bogdan
  */
 public class ImportRunner {

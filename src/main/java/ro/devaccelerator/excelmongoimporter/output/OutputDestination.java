@@ -11,5 +11,6 @@ public interface OutputDestination {
 
 	String importData(InputData data);
 
+	@Override
 	public String toString();
 }
