@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bcostea/ExcelMongoImporter.svg?branch=master)](https://travis-ci.org/bcostea/ExcelMongoImporter)
+
 Import xls and xlsx files directly to MongoDB collections.
 
 ## Goals
