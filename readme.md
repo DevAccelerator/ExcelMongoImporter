@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/bcostea/ExcelMongoImporter.svg?branch=master)](https://travis-ci.org/bcostea/ExcelMongoImporter)
+[![codecov](https://codecov.io/gh/bcostea/ExcelMongoImporter/branch/master/graph/badge.svg)](https://codecov.io/gh/bcostea/ExcelMongoImporter)
 
 Import xls and xlsx files directly to MongoDB collections.
 
