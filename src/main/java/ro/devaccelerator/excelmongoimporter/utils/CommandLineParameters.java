@@ -19,7 +19,8 @@ public class CommandLineParameters {
 
 	public static final String INPUT_PARAM = "-input";
 
-	public static final String OUTPUT_COLLECTION_PARAM = "-outputCollection";
+	public static final String OUTPUT_DATABASE_PARAM = "-database";
+	public static final String OUTPUT_COLLECTION_PARAM = "-collection";
 	public static final String OUTPUT_SERVER_PARAM = "-server";
 	public static final String OUTPUT_PORT_PARAM = "-port";
 
@@ -94,6 +95,14 @@ public class CommandLineParameters {
 	}
 	
 	/**
+	 * Gets the MongoDB database name
+	 * @return MongoDB database name
+	 */
+	public String getDatabaseName(){
+		return parameters.get(OUTPUT_DATABASE_PARAM);
+	}
+
+	/**
 	 * Gets the MongoDB collection name
 	 * @return MongoDB collection name
 	 */
@@ -116,7 +125,7 @@ public class CommandLineParameters {
 	 * @return
 	 */
 	protected boolean hasOutputParameters() {
-		return hasParam(OUTPUT_COLLECTION_PARAM);
+		return hasParam(OUTPUT_COLLECTION_PARAM) && hasParam(OUTPUT_DATABASE_PARAM);
 	}
 
 	/**

@@ -32,14 +32,14 @@ public class CommandLineParametersTest {
 		
 	@Test
 	public void hasInputParameters_false(){
-		String[] stringParameters = new String[]{"-outputCollection", "collectionName"};
+		String[] stringParameters = new String[]{"-collection", "collectionName"};
 		parameters = new CommandLineParameters(stringParameters); 
 		assertFalse(parameters.hasInputParameters());
 	}
 			
 	@Test
 	public void hasInputParameters_false_when_malformed(){
-		String[] stringParameters = new String[]{"-input", "-outputCollection", "collectionName"};
+		String[] stringParameters = new String[]{"-input", "-collection", "collectionName"};
 		parameters = new CommandLineParameters(stringParameters); 
 		assertFalse(parameters.hasInputParameters());
 	}
@@ -53,14 +53,14 @@ public class CommandLineParametersTest {
 	
 	@Test
 	public void two_parameters_complete(){
-		String[] stringParameters = new String[]{"-input", "file.xls", "-outputCollection", "collectionName"};
+		String[] stringParameters = new String[]{"-input", "file.xls", "-collection", "collectionName"};
 		parameters = new CommandLineParameters(stringParameters); 
 		assertTrue(parameters.hasInputParameters());
 	}
 	
 	@Test
 	public void hasOutputParameters_true(){
-		String[] stringParameters = new String[]{"-input", "file.xls", "-outputCollection", "collectionName"};
+		String[] stringParameters = new String[]{"-input", "file.xls", "-collection", "collectionName", "-database", "db"};
 		parameters = new CommandLineParameters(stringParameters); 
 		assertTrue(parameters.hasOutputParameters());
 		assertTrue(parameters.getInputFile().equals("file.xls"));
@@ -70,7 +70,7 @@ public class CommandLineParametersTest {
 		
 	@Test
 	public void getInputFile(){
-		String[] stringParameters = new String[]{"-input", "file.xls", "-outputCollection", "collectionName"};
+		String[] stringParameters = new String[]{"-input", "file.xls", "-collection", "collectionName"};
 		parameters = new CommandLineParameters(stringParameters); 
 		assertTrue(parameters.getInputFile().equals("file.xls"));
 	}	
@@ -78,14 +78,14 @@ public class CommandLineParametersTest {
 		
 	@Test
 	public void getCollectionName(){
-		String[] stringParameters = new String[]{"-input", "file.xls", "-outputCollection", "collectionName"};
+		String[] stringParameters = new String[]{"-input", "file.xls", "-collection", "collectionName"};
 		parameters = new CommandLineParameters(stringParameters); 
 		assertTrue(parameters.getCollectionName().equals("collectionName"));
 	}	
 	
 	@Test
 	public void getServer(){
-		String[] stringParameters = new String[]{"-input", "file.xls", "-outputCollection", "collectionName", "-server", "myserver.com"};
+		String[] stringParameters = new String[]{"-input", "file.xls", "-collection", "collectionName", "-server", "myserver.com"};
 		parameters = new CommandLineParameters(stringParameters); 
 		assertTrue(parameters.getServer().equals("myserver.com"));
 	}	
@@ -110,6 +110,14 @@ public class CommandLineParametersTest {
 		parameters = new CommandLineParameters(stringParameters); 
 		assertTrue(parameters.hasParam(CommandLineParameters.OUTPUT_PORT_PARAM));
 		assertEquals("20000", parameters.getPort());
+	}
+	
+	@Test
+	public void getDatabase_withParam(){
+		String[] stringParameters = new String[]{"-database", "db"};
+		parameters = new CommandLineParameters(stringParameters); 
+		assertTrue(parameters.hasParam(CommandLineParameters.OUTPUT_DATABASE_PARAM));
+		assertEquals("db", parameters.getDatabaseName());
 	}
 	
 	@Test

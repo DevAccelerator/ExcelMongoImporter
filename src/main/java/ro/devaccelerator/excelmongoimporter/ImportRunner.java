@@ -23,10 +23,15 @@ public class ImportRunner {
 	
 		ImportResult result = new Importer(
 				new ExcelInputSource(parameters.getInputFile()),
-				new MongoCollectionOutputDestination(parameters.getServer(), parameters.getPort(), parameters.getCollectionName())
+				new MongoCollectionOutputDestination(parameters.getServer(), parameters.getPort(), 
+													 parameters.getDatabaseName(), parameters.getCollectionName())
 		).runImport();
 		
 		Logger.info(ImportRunner.class, result.toString());
+		if(result.getErrors().size()>0){
+		Logger.info(ImportRunner.class, "\t" + result.getErrors());
+		}
+		
 		
 	}
 }

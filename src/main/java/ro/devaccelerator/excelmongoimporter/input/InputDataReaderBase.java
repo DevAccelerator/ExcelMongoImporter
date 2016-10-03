@@ -42,7 +42,7 @@ public class InputDataReaderBase implements InputDataReader {
 		Iterator<Cell> cells = currentRow.cellIterator();
 		while ( cells.hasNext() ) {
 			Cell cell = cells.next();
-			data.addColumn(columns.get(cell.getColumnIndex()), cell.getStringCellValue());
+			data.add(columns.get(cell.getColumnIndex()), cell.getStringCellValue());
 		}
 		return data;
 	}

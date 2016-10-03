@@ -10,6 +10,7 @@ import org.junit.Test;
 import ro.devaccelerator.excelmongoimporter.input.InputData;
 import ro.devaccelerator.excelmongoimporter.output.OutputDestination;
 import ro.devaccelerator.excelmongoimporter.utils.ImportResult;
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -22,7 +23,7 @@ public class ImporterTest {
 		ImportResult result = new Importer((OutputDestination destination) -> {
 			ImportResult result1 = new ImportResult();
 			InputData data = new InputData();
-			data.addColumn("Column", "Record1");
+			data.add("Column", "Record1");
 			result1.record(destination.importData(data));
 			return result1;
 		}, (InputData data) -> ImportResult.SUCCESS_MARKER + data).runImport();

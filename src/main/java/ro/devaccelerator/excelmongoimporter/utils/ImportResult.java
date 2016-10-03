@@ -52,7 +52,9 @@ public class ImportResult {
 
 	@Override
 	public String toString() {
-		return "ImportResult: {" + "errors=[ " + String.join(",", errors) + " ], successfull=[ " +  String.join(",", successfull) + " ]}";
+		return "Import finished\n"
+				+ "\t Successful: [ " + getSuccessfulImports().size() + " ]\n"
+				+ "\t Errors: [ " + getErrors().size() + " ]\n";
 	}
 	
 }

@@ -52,4 +52,14 @@ public class ImportResultTest {
 		assertEquals(1, result.getSuccessfulImports().size());
 
 	}
+	
+	@Test
+	public void record_error_and_success_toString() {
+		ImportResult result = new ImportResult();
+		result.record(ImportResult.ERROR_MARKER + " it didn't work");
+		result.record(ImportResult.SUCCESS_MARKER + " it worked");
+
+		assertEquals("Import finished\n\t Successful: [ 1 ]\n\t Errors: [ 1 ]\n", result.toString());
+
+	}
 }
