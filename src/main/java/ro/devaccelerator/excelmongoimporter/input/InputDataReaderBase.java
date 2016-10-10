@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 
 /**
@@ -42,7 +43,21 @@ public class InputDataReaderBase implements InputDataReader {
 		Iterator<Cell> cells = currentRow.cellIterator();
 		while ( cells.hasNext() ) {
 			Cell cell = cells.next();
-			data.add(columns.get(cell.getColumnIndex()), cell.getStringCellValue());
+			String value = "";
+			switch ( cell.getCellType() ) {
+				case 0:
+					DataFormatter formatter = new DataFormatter();
+					value = formatter.formatCellValue(cell);
+					break;
+				case 4:
+					value = String.valueOf(cell.getBooleanCellValue());
+					break;
+				default:
+					value = cell.getStringCellValue();
+					break;
+			}
+			
+			data.add(columns.get(cell.getColumnIndex()), value, getStringType(cell.getCellType()));
 		}
 		return data;
 	}
@@ -57,6 +72,24 @@ public class InputDataReaderBase implements InputDataReader {
 
 	private void addColumn(String columnName) {
 		columns.add(columnName);
+	}
+
+	/**
+	 * Get the cell type as a string
+	 * @param cellType - numeric cellType
+	 * @return string cellType
+	 */
+	protected String getStringType(int cellType) {
+		switch(cellType){
+			case 0:
+				return "number";
+			case 1:
+				return "string";
+			case 4:
+				return "boolean";
+			default:
+				return "string";
+		}
 	}
 
 }
